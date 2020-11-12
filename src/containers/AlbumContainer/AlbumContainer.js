@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './AlbumContainer.css';
@@ -28,12 +28,11 @@ class AlbumContainer extends Component {
         <Header/>
         <Router>
           <aside className="album-list">
-            <h2>Album List:</h2>
-            <hr/>
             { this.state.loading ?
               <p>Cargando...</p>
               :
               <ul>
+                <caption>Albums</caption>
                 {this.state.albums.map(albums =>
                   <li key={albums.id}>
                     <Link to={`/albums-list/${albums.id}`}>
@@ -61,41 +60,43 @@ class AlbumContainer extends Component {
 }
 
 const DetailsAlbum = ({ album }) => {
-  const [Album, setAlbum] =useState(album)
+
+  const [Album, setAlbum] = useState(album)
 
   useEffect(() => {
 
-    fetch('/songs')
-      .then(res => res.json())
-      .then(res => res.filter(g => g.album_id === album.id))
-      .then(songs => {
-        setAlbum({...Album,songs})
-      })
+      fetch('/songs')
+        .then(res => res.json())
+        .then(res => res.filter(g => g.album_id === album.id))
+        .then(songs => {
+          setAlbum({...Album,songs})
+        })
 
-  },[]);
 
+    // return () => {
+    //   setAlbum(album)
+    //
+    // }
+
+  },[album]);
 
   return (
     <article className="article-album">
-      <img src={Album.cover} alt={Album.name}/>
-      <h1>{Album.name}</h1>
-      <h2>{Album.artist}</h2>
+      <img src={album.cover} alt={album.name}/>
+      <h1>{album.name}</h1>
+      <h2>{album.artist}</h2>
       {
         <ul>
           {
             Album.songs &&
             Album.songs.map(song =>
-              <li key={song.id}>{song.name} {song.seconds}</li>
+              <li key={song.id}>{song.name}</li>
             )
           }
-
         </ul>
       }
-
     </article>
   )
 }
-
-
 
 export default AlbumContainer;

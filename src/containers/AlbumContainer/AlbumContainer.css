@@ -1,6 +1,13 @@
 aside{
     flex: 1 0 auto;
 }
+
+aside ul caption{
+    font-size: 15px;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+}
+
 section.album-details{
     flex: 3 0 auto;
     display: flex;

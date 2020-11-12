@@ -1,6 +1,6 @@
 {
   "albums": [
-    { "id": 1, "name": "Chip off the old block", "artist": "Blair", "cover": "/images/cover.jpg" },
+    { "id": 1, "name": "Chip off the old block", "artist": "Blair", "cover": "/images/californication.jpeg" },
     { "id": 2, "name": "Battle grounds", "artist": "Florian", "cover": "/images/cover.jpg" },
     { "id": 3, "name": "Decisions decisions", "artist": "Skylar", "cover": "/images/cover.jpg" },
     { "id": 4, "name": "Blank canvas", "artist": "Skylar", "cover": "/images/cover.jpg" },

@@ -42,6 +42,7 @@ class Home extends Component {
             Estoy cambiando entre componentes de clases y componentes funcionales para familiarizarme con los hooks
           </p>
           <p>La familiarización con redux y store y providers y actions y reducers y middlewares, cuesta mucho, paciencia</p>
+          <p>Integraré con precommit si me dá tiempo, sorry</p>
         </article>
       </section>
     )
