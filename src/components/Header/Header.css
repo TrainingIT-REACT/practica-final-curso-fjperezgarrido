@@ -1,0 +1,33 @@
+.Header {
+    flex: 4 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.Header h1 {
+    font-size: 4em;
+    margin: 1em 0;
+    font-weight: bold;
+}
+
+/* Link */
+.Navigation {
+    flex: 1 0 auto;
+    padding: 1em 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}
+
+.Link--active {
+    color: white;
+    background-color: black;
+}

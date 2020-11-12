@@ -1,0 +1,12 @@
+aside{
+    width: 33vw;
+    height: 100vh;
+    overflow: auto;
+    background: #ddd;
+}
+aside ul li{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 5px 10px;
+}
