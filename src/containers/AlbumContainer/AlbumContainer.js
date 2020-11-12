@@ -45,7 +45,7 @@ class AlbumContainer extends Component {
             }
           </aside>
           <section className="album-details">
-              {/*<Route path="/albums-list/:id" component={DetailsAlbum}/>*/}
+            {/*<Route path="/albums-list/:id" component={DetailsAlbum}/>*/}
             {albums && (
               <Route path="/albums-list/:id" render={({ match }) => (
                 //Por algun motivo he tenido que poner un eval para que match me funcione,
@@ -64,14 +64,14 @@ const DetailsAlbum = ({ album }) => {
   const [Album, setAlbum] =useState(album)
 
   useEffect(() => {
-    if (!album.songs) {
-      fetch('/songs')
-        .then(res => res.json())
-        .then(res => res.filter(g => g.album_id === album.id))
-        .then(songs => {
-          setAlbum({...Album,songs})
-        })
-    }
+
+    fetch('/songs')
+      .then(res => res.json())
+      .then(res => res.filter(g => g.album_id === album.id))
+      .then(songs => {
+        setAlbum({...Album,songs})
+      })
+
   },[]);
 
 
@@ -85,7 +85,7 @@ const DetailsAlbum = ({ album }) => {
           {
             Album.songs &&
             Album.songs.map(song =>
-                <li key={song.id}>{song.name} {song.seconds}</li>
+              <li key={song.id}>{song.name} {song.seconds}</li>
             )
           }
 
