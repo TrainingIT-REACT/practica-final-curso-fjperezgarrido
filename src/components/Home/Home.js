@@ -31,6 +31,7 @@ class Home extends Component {
             tirar siempre de los resultados que ya vamos consiguiendo en el almacen para mostrar lo que ya se tiene,
             si no siempre tendrémos los cinco primeros resultados de youtube (quien dice cinco dice...), poco más.
           </p>
+          <p>SADDD:(    he descubierto que hay muchos proyectos igualitos a este, jejejeje, no me lo esperaba. </p>
         </article>
         <article>
           <h3>Aprendido</h3>

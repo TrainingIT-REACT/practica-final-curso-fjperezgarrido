@@ -5,7 +5,8 @@ import './AlbumContainer.css';
 import {Link} from "react-router-dom";
 
 import Header from "../../components/Header";
-// import DetailsAlbum from "../../components/DetailsAlbum";
+import Player from "../../components/Reproducer";
+
 
 
 class AlbumContainer extends Component {
@@ -63,20 +64,13 @@ const DetailsAlbum = ({ album }) => {
 
   const [Album, setAlbum] = useState(album)
 
-  useEffect(() => {
-
+  useLayoutEffect(() => {
       fetch('/songs')
         .then(res => res.json())
         .then(res => res.filter(g => g.album_id === album.id))
         .then(songs => {
           setAlbum({...Album,songs})
         })
-
-
-    // return () => {
-    //   setAlbum(album)
-    //
-    // }
 
   },[album]);
 
@@ -90,7 +84,15 @@ const DetailsAlbum = ({ album }) => {
           {
             Album.songs &&
             Album.songs.map(song =>
-              <li key={song.id}>{song.name}</li>
+              <li key={song.id}>
+                <span>
+                  {song.name}
+                </span>
+                <span>
+
+                <Player path={song.audio}/>
+                </span>
+              </li>
             )
           }
         </ul>

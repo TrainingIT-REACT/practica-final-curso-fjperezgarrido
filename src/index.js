@@ -23,8 +23,8 @@ ReactDOM.render(
         <Switch>
             <Route path="/" exact={true} component={ BaseContainer }/>
             <Route path="/albums-list" component={ AlbumContainer }/>
-            {/*<Route path="/artists" component={ ArtistContainer }/>*/}
-            {/*<Route path="/songs" component={ SongsContainer }/>*/}
+            <Route path="/artist-list" component={ ArtistContainer }/>
+            <Route path="/songs-list" component={ SongsContainer }/>
         </Switch>
     </Router>
   </Provider>,
