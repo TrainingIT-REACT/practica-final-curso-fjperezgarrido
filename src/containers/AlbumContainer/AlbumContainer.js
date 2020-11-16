@@ -65,12 +65,12 @@ const DetailsAlbum = ({ album }) => {
   const [Album, setAlbum] = useState(album)
 
   useLayoutEffect(() => {
-      fetch('/songs')
-        .then(res => res.json())
-        .then(res => res.filter(g => g.album_id === album.id))
-        .then(songs => {
-          setAlbum({...Album,songs})
-        })
+    fetch('/songs')
+      .then(res => res.json())
+      .then(res => res.filter(g => g.album_id === album.id))
+      .then(songs => {
+        setAlbum({...Album,songs})
+      })
 
   },[album]);
 
@@ -89,8 +89,7 @@ const DetailsAlbum = ({ album }) => {
                   {song.name}
                 </span>
                 <span>
-
-                <Player path={song.audio}/>
+                  <Player path={song.audio}/>
                 </span>
               </li>
             )
