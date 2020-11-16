@@ -1,12 +1,13 @@
 import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import './SongsContainer.css';
-import {Link} from "react-router-dom";
+import '../css/general_styles.css'
 
 import Header from "../../components/Header";
-// import DetailsAlbum from "../../components/DetailsAlbum";
 import Player from "../../components/Reproducer";
+
+
+
 
 class SongsContainer extends Component {
   state = {
@@ -14,6 +15,8 @@ class SongsContainer extends Component {
     songs: [],
     loading: true,
   }
+
+
 
   componentDidMount() {
     fetch('/songs')
@@ -24,7 +27,6 @@ class SongsContainer extends Component {
   }
 
   render() {
-    const {state} = this.state;
     return (
       <>
         <Header/>
@@ -35,10 +37,13 @@ class SongsContainer extends Component {
               :
               <ul>
                 {this.state.songs.map(song =>
-                  <li key={song.id}>
+                  <li className="text-left" key={song.id}>
                     <Link to={`/songs-list/${song.id}`}>
                       {song.name}
                     </Link>
+                    <span className="text-right">
+                      <ToTimeString seconds={song.seconds} />
+                    </span>
                   </li>
                 )}
               </ul>
@@ -57,6 +62,11 @@ class SongsContainer extends Component {
       </>
     );
   }
+}
+
+
+const ToTimeString = ({seconds}) => {
+  return (new Date(seconds * 1000)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0];
 }
 
 const SongDetails = ({ song_id }) => {

@@ -20,15 +20,15 @@ import SongsContainer from './containers/SongsContainer';
 ReactDOM.render(
   <Provider store={ store }>
     <Router>
-        <Switch>
-            <Route path="/" exact={true} component={ BaseContainer }/>
-            <Route path="/albums-list" component={ AlbumContainer }/>
-            <Route path="/artist-list" component={ ArtistContainer }/>
-            <Route path="/songs-list" component={ SongsContainer }/>
-        </Switch>
+      <Switch>
+        <Route path="/" exact={true} component={ BaseContainer }/>
+        <Route path="/albums-list" component={ AlbumContainer }/>
+        <Route path="/artist-list" component={ ArtistContainer }/>
+        <Route path="/songs-list" component={ SongsContainer }/>
+      </Switch>
     </Router>
   </Provider>,
-document.getElementById('root'));
+  document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

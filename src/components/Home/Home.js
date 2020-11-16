@@ -13,16 +13,15 @@ class Home extends Component {
           <h3>Tareas Pendientes</h3>
           <p>En breve dispondremos de un buscador.</p>
           <p>Seria chulo hacer llamadas a api de youtube con 5 primeros resultados</p>
-          <p>Seria chulo linkar resultado seleccionado con youtube-dl:
-              <blockquote>
-                youtube-dl -i -x --audio-format mp3
-                              --prefer-ffmpeg
-                              --no-playlist (solo canciones individuales por resultado, no playlist)
-                              --write-thumbnail (imagen para caratula)
-                              --write-info-json (si se quiere traerse info de la cancion y ponerla en el reproductor)
-                              --output TEMPLATE (habrá que currarse una buena template para el naming de las canciones)
-              </blockquote>
-          </p>
+          <p>Seria chulo linkar resultado seleccionado con youtube-dl:</p>
+          <blockquote>
+            youtube-dl -i -x --audio-format mp3
+            --prefer-ffmpeg
+            --no-playlist (solo canciones individuales por resultado, no playlist)
+            --write-thumbnail (imagen para caratula)
+            --write-info-json (si se quiere traerse info de la cancion y ponerla en el reproductor)
+            --output TEMPLATE (habrá que currarse una buena template para el naming de las canciones)
+          </blockquote>
           <p>
             La idea sería buscar primero en el directorio donde se almacenan las canciones con sus metadatos y
             proporcionar los cinco primeros resultados de youtube, si se escoge una cancion del directorio propio de

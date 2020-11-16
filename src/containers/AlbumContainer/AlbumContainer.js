@@ -1,8 +1,7 @@
 import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
-import './AlbumContainer.css';
-import {Link} from "react-router-dom";
+import '../css/general_styles.css'
 
 import Header from "../../components/Header";
 import Player from "../../components/Reproducer";
@@ -65,12 +64,12 @@ const DetailsAlbum = ({ album }) => {
   const [Album, setAlbum] = useState(album)
 
   useLayoutEffect(() => {
-      fetch('/songs')
-        .then(res => res.json())
-        .then(res => res.filter(g => g.album_id === album.id))
-        .then(songs => {
-          setAlbum({...Album,songs})
-        })
+    fetch('/songs')
+      .then(res => res.json())
+      .then(res => res.filter(g => g.album_id === album.id))
+      .then(songs => {
+        setAlbum({...Album,songs})
+      })
 
   },[album]);
 
@@ -89,8 +88,7 @@ const DetailsAlbum = ({ album }) => {
                   {song.name}
                 </span>
                 <span>
-
-                <Player path={song.audio}/>
+                  <Player path={song.audio}/>
                 </span>
               </li>
             )

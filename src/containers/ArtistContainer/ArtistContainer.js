@@ -1,57 +1,59 @@
 import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
-import './ArtistContainer.css';
-import {Link} from "react-router-dom";
+import '../css/general_styles.css'
 
 import Header from "../../components/Header";
-// import DetailsAlbum from "../../components/DetailsAlbum";
 
 
 class ArtistContainer extends Component {
   state = {
-    albums: []
+    albums: [],
+    artist: [],
+    loading: true
   }
 
   componentDidMount() {
     fetch('/albums')
       .then(res => res.json())
       .then(albums => {
-        this.setState({albums})
+        const artist = new Set(albums.map(album => album.artist))
+        this.setState({albums: albums, artist: Array.from(artist), loading: false})
       })
   }
 
   render() {
-    const {albums} = this.state;
+    const {artist} = this.state;
     return (
       <>
         <Header/>
         <Router>
-          <aside className="album-list">
+          <aside className="artist-list">
             { this.state.loading ?
               <p>Cargando...</p>
               :
               <ul>
-                <caption>Artist</caption>
-                {this.state.albums.map(albums =>
-                  <li key={albums.id}>
-                    <Link to={`/albums-list/${albums.id}`}>
-                      {albums.artist}
-                    </Link>
-                  </li>
-                )}
+                <caption>Artists</caption>
+                {
+                  this.state.artist.map((artist,index) =>
+                    <li key={index}>
+                      <Link to={`/artist-list/${artist}`}>{artist}</Link>
+                    </li>
+                  )
+                }
               </ul>
             }
           </aside>
-          <section className="album-details">
-            {/*<Route path="/albums-list/:id" component={DetailsAlbum}/>*/}
-            {albums && (
-              <Route path="/albums-list/:id" render={({ match }) => (
-                //Por algun motivo he tenido que poner un eval para que match me funcione,
-                // en video demo de react router dom no es necesario no se el motivo
-                <ArtistDetails album={albums.find(g => g.id === eval(match.params.id) )} />
-              )}/>
-            )}
+          <section className="artist-details">
+            {
+              artist && (
+                <Route path="/artist-list/:id" render={({ match }) => (
+                  <ArtistDetails artist={match.params.id} />
+                )
+                }
+                />
+              )
+            }
           </section>
         </Router>
       </>
@@ -59,37 +61,43 @@ class ArtistContainer extends Component {
   }
 }
 
-const ArtistDetails = ({ album }) => {
+const ArtistDetails = ({ artist }) => {
 
-  const [Album, setAlbum] = useState(album)
+  const [Album, setAlbum] = useState("")
+  const [loading, setLoading] = useState(true)
 
-  useLayoutEffect(() => {
-    fetch('/songs')
+  useEffect(() => {
+    fetch('/albums')
       .then(res => res.json())
-      .then(res => res.filter(g => g.album_id === album.id))
-      .then(songs => {
-        setAlbum({...Album,songs})
+      .then(res => res.filter(g => g.artist === artist))
+      .then(albums => {
+        setAlbum(albums)
+        setLoading(false)
       })
 
-  },[album]);
+  },[artist]);
 
   return (
-    <article className="article-album">
-      <img src={album.cover} alt={album.name}/>
-      <h1>{album.name}</h1>
-      <h2>{album.artist}</h2>
-      {
-        <ul>
+    <>
+      { loading ?
+        <p>Cargando...</p>
+        :
+        <>
           {
-            Album.songs &&
-            Album.songs.map(song =>
-              <li key={song.id}>{song.name}</li>
+            Album &&
+            Album.map(album =>
+              <article className="article-artist">
+                <img src={album.cover} alt={album.name}/>
+                <h1>{album.name}</h1>
+                <h2>{artist}</h2>
+              </article>
             )
           }
-        </ul>
+        </>
       }
-    </article>
-  )
+    </>
+  );
 }
+
 
 export default ArtistContainer;
