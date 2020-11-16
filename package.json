@@ -5,11 +5,12 @@
   "dependencies": {
     "react": "16.13.1",
     "react-dom": "^16.13.1",
-    "redux": "^4.0.1",
+    "react-h5-audio-player": "^3.4.1",
     "react-redux": "^6.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "npm-run-all --parallel client server",
