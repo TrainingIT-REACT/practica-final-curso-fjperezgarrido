@@ -1,7 +1,7 @@
 import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
-import './ArtistContainer.css';
+import '../css/general_styles.css'
 
 import Header from "../../components/Header";
 
@@ -33,6 +33,7 @@ class ArtistContainer extends Component {
               <p>Cargando...</p>
               :
               <ul>
+                <caption>Artists</caption>
                 {
                   this.state.artist.map((artist,index) =>
                     <li key={index}>
@@ -63,33 +64,38 @@ class ArtistContainer extends Component {
 const ArtistDetails = ({ artist }) => {
 
   const [Album, setAlbum] = useState("")
+  const [loading, setLoading] = useState(true)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetch('/albums')
       .then(res => res.json())
       .then(res => res.filter(g => g.artist === artist))
       .then(albums => {
-        setAlbum({albums})
+        setAlbum(albums)
+        setLoading(false)
       })
 
   },[artist]);
 
   return (
-    // <>
-    //   {
-    //     Album && (
-    //       Album.map(album =>
-    //         <article className="album-info">
-    //           <img src={album.cover} alt={album.name}/>
-    //           <h1>{album.name}</h1>
-    //           <h2>{artist}</h2>
-    //         </article>
-    //       )
-    //     )
-    //   }
-    //
-    // </>
-    <h1>{artist}</h1>
+    <>
+      { loading ?
+        <p>Cargando...</p>
+        :
+        <>
+          {
+            Album &&
+            Album.map(album =>
+              <article className="article-artist">
+                <img src={album.cover} alt={album.name}/>
+                <h1>{album.name}</h1>
+                <h2>{artist}</h2>
+              </article>
+            )
+          }
+        </>
+      }
+    </>
   );
 }
 

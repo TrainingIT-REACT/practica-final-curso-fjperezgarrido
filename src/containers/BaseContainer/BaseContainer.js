@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import './BaseContainer.css';
+import '../css/general_styles.css'
 
 // Importamos los componentes
 import Header from '../../components/Header';
