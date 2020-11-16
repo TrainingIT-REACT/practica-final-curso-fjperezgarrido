@@ -1,10 +1,24 @@
 import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+// import 'react-h5-audio-player/lib/styles.less' Use LESS
+// import 'react-h5-audio-player/src/styles.scss' Use SASS
+
 import '../css/general_styles.css'
 
 import Header from "../../components/Header";
-import Player from "../../components/Reproducer";
+// import Player from "../../components/Reproducer";
+
+// const Player = () => (
+//   <AudioPlayer
+//     autoPlay
+//     src="http://example.com/audio.mp3"
+//     onPlay={e => console.log("onPlay")}
+//     // other props here
+//   />
+// );
 
 
 
@@ -74,7 +88,7 @@ const SongDetails = ({ song_id }) => {
   const [Song,setSong] = useState(null)
   const [Album,setAlbum] = useState(null)
 
-  useLayoutEffect( () => {
+  useEffect( () => {
     fetch('/songs')
       .then(res => res.json())
       .then(res => res.find(g => g.id === song_id))
@@ -86,18 +100,19 @@ const SongDetails = ({ song_id }) => {
   return (
     <>
       <article className="song-details">
-        <ul>
-          { Song &&
-          <li key={Song.id}>
+        { Song &&
+        <>
+          <p key={Song.id}>
             <span>{Song.name}</span>
-            <span>
-              <Player path={Song.audio}/>
-            </span>
+          </p>
+          <AudioPlayer
 
-          </li>
-
-          }
-        </ul>
+            autoPlay={false}
+            src={Song.audio}
+            onPlay={e => console.log("onPlay")}
+          />
+        </>
+        }
       </article>
     </>
   )
