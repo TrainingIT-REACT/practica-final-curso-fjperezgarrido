@@ -1,12 +1,10 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import '../css/general_styles.css'
 
 // Importamos los componentes
 import Header from '../../components/Header';
-// import {NavLink} from "react-router-dom";
-
 import Home from "../../components/Home";
 // import SearchContainer from '../SearchContainer';
 
@@ -17,13 +15,13 @@ import Home from "../../components/Home";
  * `undefined`, renderizará la vista para buscar nuevos repositorios.
  */
 class BaseContainer extends React.Component {
-  // /**
-  //  * Props del component
-  //  */
-  // static propTypes = {
-  //   // Es necesario, si no, los links no se actualizarán
-  //   location: PropTypes.object.isRequired
-  // };
+  /**
+   * Props del component
+   */
+  static propTypes = {
+    // Es necesario, si no, los links no se actualizarán
+    location: PropTypes.object.isRequired
+  };
 
   /**
    * Render the HomeContainer component
@@ -31,11 +29,10 @@ class BaseContainer extends React.Component {
   render() {
     return (
       <>
-      <Header/>
-      <Home/>
-
+        <Header/>
+        <Home/>
       </>
-      );
+    );
   }
 }
 

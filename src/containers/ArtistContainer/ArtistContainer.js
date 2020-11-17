@@ -1,4 +1,4 @@
-import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
 
 import '../css/general_styles.css'
@@ -47,8 +47,8 @@ class ArtistContainer extends Component {
           <section className="artist-details">
             {
               artist && (
-                <Route path="/artist-list/:id" render={({ match }) => (
-                  <ArtistDetails artist={match.params.id} />
+                <Route path="/artist-list/:artist" render={({ match }) => (
+                  <ArtistDetails artist={match.params.artist} />
                 )
                 }
                 />

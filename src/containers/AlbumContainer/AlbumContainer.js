@@ -1,5 +1,5 @@
-import React, {Component, useLayoutEffect, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
+import React, {Component, useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import '../css/general_styles.css'
 
@@ -44,14 +44,16 @@ class AlbumContainer extends Component {
             }
           </aside>
           <section className="album-details">
-            {/*<Route path="/albums-list/:id" component={DetailsAlbum}/>*/}
-            {albums && (
-              <Route path="/albums-list/:id" render={({ match }) => (
-                //Por algun motivo he tenido que poner un eval para que match me funcione,
-                // en video demo de react router dom no es necesario no se el motivo
-                <DetailsAlbum album={albums.find(g => g.id === eval(match.params.id) )} />
-              )}/>
-            )}
+            {
+              albums && albums.length !== 0 && (
+
+                  <Route path="/albums-list/:id" render={({ match }) => (
+                      <DetailsAlbum album={albums.find(g => g.id === eval(match.params.id) )} />
+                    )}/>
+
+
+              )
+            }
           </section>
         </Router>
       </>
@@ -62,24 +64,29 @@ class AlbumContainer extends Component {
 const DetailsAlbum = ({ album }) => {
 
   const [Album, setAlbum] = useState(album)
+  const [loading, setLoading] =useState(true)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetch('/songs')
       .then(res => res.json())
-      .then(res => res.filter(g => g.album_id === album.id))
+      .then(res => res.filter(g => g.album_id === Album.id))
       .then(songs => {
         setAlbum({...Album,songs})
+        setLoading(false)
       })
 
   },[album]);
 
   return (
     <article className="article-album">
-      <img src={album.cover} alt={album.name}/>
-      <h1>{album.name}</h1>
-      <h2>{album.artist}</h2>
-      {
-        <ul>
+      { loading ?
+        <p>Cargando ...</p>
+        :
+        <>
+          <img src={album.cover} alt={album.name}/>
+          <h1>{album.name}</h1>
+          <h2>{album.artist}</h2>
+          <ul>
           {
             Album.songs &&
             Album.songs.map(song =>
@@ -94,6 +101,7 @@ const DetailsAlbum = ({ album }) => {
             )
           }
         </ul>
+        </>
       }
     </article>
   )
