@@ -22,6 +22,7 @@ class Home extends Component {
             --write-info-json (si se quiere traerse info de la cancion y ponerla en el reproductor)
             --output TEMPLATE (habrá que currarse una buena template para el naming de las canciones)
           </blockquote>
+
           <p>
             La idea sería buscar primero en el directorio donde se almacenan las canciones con sus metadatos y
             proporcionar los cinco primeros resultados de youtube, si se escoge una cancion del directorio propio de
@@ -43,6 +44,7 @@ class Home extends Component {
           </p>
           <p>La familiarización con redux y store y providers y actions y reducers y middlewares, cuesta mucho, paciencia</p>
           <p>Integraré con precommit si me dá tiempo, sorry</p>
+          <p>Esto es imprescindible: <a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener noreferrer">Diagrama del ciclo de vida de metodos en React</a> (además multilanguage)</p>
         </article>
       </section>
     )
