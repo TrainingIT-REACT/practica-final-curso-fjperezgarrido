@@ -1,9 +1,9 @@
 import React, {Component, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import Header from "../../components/Header";
+import '../../css/general_styles.css';
 
-import '../css/general_styles.css'
+import Header from "../../components/Header";
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
