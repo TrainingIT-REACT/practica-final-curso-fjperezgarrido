@@ -1,0 +1,102 @@
+div#root{
+    display: flex;
+    flex-flow: row wrap;
+}
+aside{
+    border-right: 3px ridge #bbb;
+    margin: 0 1rem;
+    padding: 1rem;
+    height: 30rem;
+    overflow: auto;
+}
+aside ul{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0 1rem;
+}
+aside ul li{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0.5rem 0;
+    list-style-type: none;
+    text-align: center;
+}
+aside ul li a{
+    text-decoration: none;
+}
+aside ul li span{
+    flex: 1 0 auto;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem 0;
+    width: 50%;
+}
+
+.Home {
+    flex-flow: column nowrap;
+    width: 100%;
+    text-align: center;
+
+}
+.Home > h2,h5,h6{
+    margin: 0.5rem
+}
+
+.Apuntes article{
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    flex: 1 0 auto;
+    font-size: 10pt;
+    margin: 1rem;
+    padding: 1rem;
+    width: 33%;
+}
+
+.Apuntes{
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+section.searchform{
+    justify-content: center;
+}
+
+article{
+    text-align: center;
+}
+article img{
+    object-fit: cover;
+    width: 29%;
+}
+
+article ul{
+    width: 100%;
+    text-align: left;
+
+}
+article ul li{
+    list-style-type: none;
+}
+
+.album-player{
+
+}
+
+
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+

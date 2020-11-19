@@ -1,12 +1,10 @@
 import React, {Component, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
 
 import Header from "../../components/Header";
-
-import '../css/general_styles.css'
-
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import SearchForm from "../../components/SearchForm";
 // import 'react-h5-audio-player/lib/styles.less' Use LESS
 // import 'react-h5-audio-player/src/styles.scss' Use SASS
 
@@ -36,12 +34,20 @@ class SongsContainer extends Component {
       .then(songs => {
         this.setState({songs: songs, loading: false})
       })
+
   }
 
   render() {
     return (
       <>
         <Header/>
+        <nav className="Navigation">
+          <NavLink exact to="/" className="Link" activeClassName="Link--active">Home</NavLink>
+          <NavLink exact to="/albums-list" className="Link" activeClassName="Link--active">Albums</NavLink>
+          <NavLink exact to="/artist-list" className="Link" activeClassName="Link--active">Artists</NavLink>
+          <NavLink exact to="/songs-list" className="Link" activeClassName="Link--active">Songs</NavLink>
+          <NavLink exact to="/apuntes" className="Link" activeClassName="Link--active">Apuntes</NavLink>
+        </nav>
         <Router>
           <aside className="album-list">
             { this.state.loading ?

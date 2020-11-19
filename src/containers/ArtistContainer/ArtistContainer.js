@@ -1,9 +1,7 @@
 import React, {Component, useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
-
-import '../css/general_styles.css'
-
+import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
 import Header from "../../components/Header";
+import SearchForm from "../../components/SearchForm";
 
 
 class ArtistContainer extends Component {
@@ -27,13 +25,19 @@ class ArtistContainer extends Component {
     return (
       <>
         <Header/>
+        <nav className="Navigation">
+          <NavLink exact to="/" className="Link" activeClassName="Link--active">Home</NavLink>
+          <NavLink exact to="/albums-list" className="Link" activeClassName="Link--active">Albums</NavLink>
+          <NavLink exact to="/artist-list" className="Link" activeClassName="Link--active">Artists</NavLink>
+          <NavLink exact to="/songs-list" className="Link" activeClassName="Link--active">Songs</NavLink>
+          <NavLink exact to="/apuntes" className="Link" activeClassName="Link--active">Apuntes</NavLink>
+        </nav>
         <Router>
           <aside className="artist-list">
             { this.state.loading ?
               <p>Cargando...</p>
               :
               <ul>
-                <caption>Artists</caption>
                 {
                   this.state.artist.map((artist,index) =>
                     <li key={index}>
@@ -98,6 +102,5 @@ const ArtistDetails = ({ artist }) => {
     </>
   );
 }
-
 
 export default ArtistContainer;
