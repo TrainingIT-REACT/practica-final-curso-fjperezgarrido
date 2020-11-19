@@ -2,14 +2,11 @@ div#root{
     display: flex;
     flex-flow: row wrap;
 }
-
 aside{
     border-right: 3px ridge #bbb;
-    flex: 1 0 auto;
-    margin: 0;
-    padding: 0;
-    width: 20%;
-    height: 45rem;
+    margin: 0 1rem;
+    padding: 1rem;
+    height: 30rem;
     overflow: auto;
 }
 aside ul{
@@ -19,11 +16,6 @@ aside ul{
     margin: 0;
     padding: 0 1rem;
 }
-aside ul caption{
-    font-size: 25px;
-    text-align: center;
-    border-bottom: 2px ridge #bbb;
-}
 aside ul li{
     display: flex;
     justify-content: flex-start;
@@ -31,7 +23,6 @@ aside ul li{
     list-style-type: none;
     text-align: center;
 }
-
 aside ul li a{
     text-decoration: none;
 }
@@ -39,14 +30,37 @@ aside ul li span{
     flex: 1 0 auto;
 }
 
-
 section{
     display: flex;
-    flex: 3 0 auto;
-    justify-content: space-evenly;
-    padding: 2rem;
-    height: 0;
-    width: 75%;
+    justify-content: center;
+    padding: 1rem 1rem 0;
+    width: 60%;
+}
+
+.Home {
+    flex-flow: column nowrap;
+    flex: 1 0 auto;
+    text-align: center;
+
+}
+.Home > h2,h5,h6{
+    margin: 0.5rem
+}
+
+.Home article{
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    flex: 1 0 auto;
+    font-size: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    width: 33%;
+}
+
+
+
+section.searchform{
+    margin: 0 auto;
 }
 
 article{
@@ -54,7 +68,6 @@ article{
     text-align: center;
     width: 25%;
 }
-
 article img{
     display: block;
     object-fit: cover;
