@@ -39,12 +39,9 @@ class AlbumContainer extends Component {
           <section className="album-details">
             {
               albums && albums.length !== 0 && (
-
-                  <Route path="/albums-list/:id" render={({ match }) => (
-                      <DetailsAlbum album={albums.find(g => g.id === eval(match.params.id) )} />
-                    )}/>
-
-
+                <Route path="/albums-list/:id" render={({ match }) => (
+                  <DetailsAlbum album={albums.find(g => g.id === eval(match.params.id) )} />
+                )}/>
               )
             }
           </section>
@@ -62,7 +59,7 @@ const DetailsAlbum = ({ album }) => {
   useEffect(() => {
     fetch('/songs')
       .then(res => res.json())
-      .then(res => res.filter(g => g.album_id === Album.id))
+      .then(res => res.filter(g => g.album_id === album.id))
       .then(songs => {
         setAlbum({...Album,songs})
         setLoading(false)
@@ -80,20 +77,20 @@ const DetailsAlbum = ({ album }) => {
           <h1>{album.name}</h1>
           <h2>{album.artist}</h2>
           <ul>
-          {
-            Album.songs &&
-            Album.songs.map(song =>
-              <li key={song.id}>
-                <span>
-                  {song.name}
-                </span>
-                <span>
-                  <Player path={song.audio}/>
-                </span>
-              </li>
-            )
-          }
-        </ul>
+            {
+              Album.songs &&
+              Album.songs.map(song =>
+                <li key={song.id}>
+                  <span>
+                    {song.name}
+                  </span>
+                  <span className="album-player">
+                    <Player path={song.audio}/>
+                  </span>
+                </li>
+              )
+            }
+          </ul>
         </>
       }
     </article>

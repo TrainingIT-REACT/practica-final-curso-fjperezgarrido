@@ -6,7 +6,7 @@ class ApuntesContainer extends Component {
     return (
       <>
         <Header/>
-        <section className="Home">
+        <section className="Apuntes">
           <article>
             <h3>Tareas Pendientes</h3>
             <p>En breve dispondremos de un buscador.</p>
