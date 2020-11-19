@@ -11,6 +11,7 @@ import Header from '../../components/Header';
 import Home from "../../components/Home";
 import SearchForm from '../../components/SearchForm';
 import ResultList from "../../components/ResultList/ResultList";
+import {NavLink} from "react-router-dom";
 
 
 /**
@@ -52,9 +53,15 @@ class BaseContainer extends React.Component {
     // dos busquedas distintas.
 
   onSubmit = value => {
+    if (value === '') {
+      return (
+        false
+      )
+    }
     // Lanzamos la accion!
     this.props.dispatch(startSearch(value));
     // Realizamos la petición a la API
+
     fetch(`/albums?q=${ value }`)
       .then(res => {
         return res.json();
@@ -79,9 +86,18 @@ class BaseContainer extends React.Component {
     return (
       <>
         <Header/>
+        <nav className="Navigation">
+          <NavLink exact to="/" className="Link" activeClassName="Link--active">Home</NavLink>
+          <NavLink exact to="/albums-list" className="Link" activeClassName="Link--active">Albums</NavLink>
+          <NavLink exact to="/artist-list" className="Link" activeClassName="Link--active">Artists</NavLink>
+          <NavLink exact to="/songs-list" className="Link" activeClassName="Link--active">Songs</NavLink>
+          <NavLink exact to="/apuntes" className="Link" activeClassName="Link--active">Apuntes</NavLink>
+          <SearchForm onSubmit={this.onSubmit} search={this.props.search}/>
+        </nav>
         <Home/>
         <section className="searchform">
-          <SearchForm onSubmit={this.onSubmit} search={this.props.search}/>
+
+
           <ResultList data={ this.props.results }
                       total={ this.props.results.length }
                       loading={ this.props.loading }

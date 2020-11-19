@@ -21,13 +21,7 @@ class Header extends React.Component {
   render() {
     return <header className="Header">
       <h1>Reactify</h1>
-      <nav className="Navigation">
-        <NavLink exact to="/" className="Link" activeClassName="Link--active">Home</NavLink>
-        <NavLink exact to="/albums-list" className="Link" activeClassName="Link--active">Albums</NavLink>
-        <NavLink exact to="/artist-list" className="Link" activeClassName="Link--active">Artists</NavLink>
-        <NavLink exact to="/songs-list" className="Link" activeClassName="Link--active">Songs</NavLink>
-        <NavLink exact to="/apuntes" className="Link" activeClassName="Link--active">Apuntes</NavLink>
-      </nav>
+
     </header>
   }
 }

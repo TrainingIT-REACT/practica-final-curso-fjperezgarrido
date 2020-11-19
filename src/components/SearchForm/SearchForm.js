@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchForm.css';
+
 /**
  * Renderiza el formulario de búsqueda. A pesar de ser un componente de tipo
  * presential, este si define su propio estado. No obstante, el estado no afecta
@@ -48,7 +50,7 @@ class SearchForm extends React.PureComponent {
    * capturamos el evento onChange del input para almacenar el valor del texto.
    */
   render() {
-    return <form onSubmit={ this.onSubmit } className="inline">
+    return <form onSubmit={ this.onSubmit } className="buscador inline">
       <input type="text" className="u-full-width" name="Search"
              placeholder="albums, artist, songs, ..." onChange={ this.onChange }
              id="searchInput" defaultValue={ this.props.search }/>
