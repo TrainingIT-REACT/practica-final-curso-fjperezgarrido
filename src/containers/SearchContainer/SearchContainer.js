@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { startSearch, successSearch } from '../../actions/actions';
 
-// Importamos los componentes
 import SearchForm from '../../components/SearchForm';
-import RepositoryList from '../../components/RepositoryList';
+// import RepositoryList from '../../components/RepositoryList';
 
 /**
  * Muestra un buscador, así como la lista de resultados. Este componente manda
@@ -31,7 +30,7 @@ class SearchContainer extends React.Component {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
-    // Ya no necesitamos el estado! Todo está en los props
+    // Ya no necesitamos el estado! everything está en los props
     // this.state = { ... }
   }
 
@@ -39,29 +38,38 @@ class SearchContainer extends React.Component {
    * Este método actua como callback del evento onSubmit del formulario.
    * Recibe como parámetro el campo que debe de buscar.
    */
-  onSubmit = value => {
-    // Lanzamos la accion!
-    this.props.dispatch(startSearch(value));
-    // Realizamos la petición a la API
-    fetch(`https://api.github.com/search/repositories?q=${ value }`)
-      .then(res => {
-        return res.json();
+
+  async onSubmit(value) {
+    this.props.dispatch(startSearch((value)));
+    try {
+      const album_results = await fetch(`/albums?q=${value}`)
+      const results_album = await album_results.json();
+
+      const songs_result = await fetch(`/songs?q=${value}`)
+      const results_song = await songs_result.json();
+
+      const results = {
+        ...results_album,
+        ...results_song,
+      }
+
+      this.props.dispatch(successSearch(results.items));
+
+    } catch (err) {
+      this.props.dispatch({
+        response: "Error en las consultas",
+        loading: false,
       })
-      .then(res => {
-        this.props.dispatch(successSearch(res.items));
-      })
-      .catch(err => {
-        // Mostramos el error por consola
-        console.log(err);
-      })
-  }
+    }
+
+  };
 
   /**
    * Render the SearchContainer component
    */
   render() {
-    return <section>
-      <SearchForm onSubmit={ this.onSubmit } search={ this.props.search } />
+    return <section className="searchform">
+      <SearchForm onSubmit={this.onSubmit} search={this.props.search}/>
       {/*<RepositoryList data={ this.props.results } total={ this.props.results.length }*/}
       {/*                loading={ this.props.loading } search={ this.props.search }*/}
       {/*                queried={ this.props.queried } />*/}

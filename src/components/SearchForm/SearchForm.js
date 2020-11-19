@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Renderiza el formulario de búsqueda. A pesar de ser un componente de tipo
@@ -47,12 +48,12 @@ class SearchForm extends React.PureComponent {
    * capturamos el evento onChange del input para almacenar el valor del texto.
    */
   render() {
-    return <form onSubmit={ this.onSubmit }>
-      <label htmlFor="searchInput">Search a repository</label>
+    return <form onSubmit={ this.onSubmit } className="inline">
       <input type="text" className="u-full-width" name="Search"
-             placeholder="react, rails, webpack..." onChange={ this.onChange }
+             placeholder="albums, artist, songs, ..." onChange={ this.onChange }
              id="searchInput" defaultValue={ this.props.search }/>
-      <p className="align-center"><input className="button-primary" type="submit" value="Search"/></p>
+      <button className="button-primary" type="submit" value="Search">Buscar</button>
+
     </form>;
   }
 }

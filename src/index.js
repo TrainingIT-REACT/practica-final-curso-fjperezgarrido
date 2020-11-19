@@ -16,6 +16,7 @@ import BaseContainer from './containers/BaseContainer';
 import AlbumContainer from './containers/AlbumContainer';
 import ArtistContainer from './containers/ArtistContainer';
 import SongsContainer from './containers/SongsContainer';
+import ApuntesContainer from "./containers/ApuntesContainer";
 
 ReactDOM.render(
   <Provider store={ store }>
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path="/albums-list" component={ AlbumContainer }/>
         <Route path="/artist-list" component={ ArtistContainer }/>
         <Route path="/songs-list" component={ SongsContainer }/>
+        <Route path="/apuntes" component={ ApuntesContainer }/>
       </Switch>
     </Router>
   </Provider>,

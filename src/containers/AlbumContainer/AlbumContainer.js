@@ -1,18 +1,13 @@
 import React, {Component, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-import '../../css/general_styles.css';
-
 import Header from "../../components/Header";
 import Player from "../../components/Reproducer";
-
 
 
 class AlbumContainer extends Component {
   state = {
     albums: []
   }
-
   componentDidMount() {
     fetch('/albums')
       .then(res => res.json())
@@ -20,7 +15,6 @@ class AlbumContainer extends Component {
         this.setState({albums})
       })
   }
-
   render() {
     const {albums} = this.state;
     return (
@@ -32,7 +26,6 @@ class AlbumContainer extends Component {
               <p>Cargando...</p>
               :
               <ul>
-                <caption>Albums</caption>
                 {this.state.albums.map(albums =>
                   <li key={albums.id}>
                     <Link to={`/albums-list/${albums.id}`}>

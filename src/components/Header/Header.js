@@ -1,9 +1,7 @@
 import React from 'react';
-// import { NavLink} from "react-router-dom";
-
-// Importamos los estilos
-import './Header.css';
 import {NavLink} from "react-router-dom";
+
+import './Header.css';
 
 /**
  * Muestra el header de nuestra aplicación. No necesitamos que se actualice por
@@ -28,6 +26,7 @@ class Header extends React.Component {
         <NavLink exact to="/albums-list" className="Link" activeClassName="Link--active">Albums</NavLink>
         <NavLink exact to="/artist-list" className="Link" activeClassName="Link--active">Artists</NavLink>
         <NavLink exact to="/songs-list" className="Link" activeClassName="Link--active">Songs</NavLink>
+        <NavLink exact to="/apuntes" className="Link" activeClassName="Link--active">Apuntes</NavLink>
       </nav>
     </header>
   }

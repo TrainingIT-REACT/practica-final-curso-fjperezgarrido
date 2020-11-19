@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 
 import '../../css/general_styles.css';
 
-// Importamos los componentes
 import Header from '../../components/Header';
 import Home from "../../components/Home";
-// import SearchContainer from '../SearchContainer';
-
+import SearchContainer from '../SearchContainer';
 
 /**
  * Este es el container base de nuestra aplicación. Si recibe un elemento en
@@ -31,10 +29,12 @@ class BaseContainer extends React.Component {
       <>
         <Header/>
         <Home/>
+        <SearchContainer/>
+
+
       </>
     );
   }
 }
 
-// Export the class
 export default BaseContainer;

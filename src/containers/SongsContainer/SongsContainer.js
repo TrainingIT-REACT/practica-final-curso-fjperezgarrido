@@ -1,10 +1,7 @@
 import React, {Component, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import '../../css/general_styles.css';
-
 import Header from "../../components/Header";
-
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 // import 'react-h5-audio-player/lib/styles.less' Use LESS
@@ -36,6 +33,7 @@ class SongsContainer extends Component {
       .then(songs => {
         this.setState({songs: songs, loading: false})
       })
+
   }
 
   render() {
