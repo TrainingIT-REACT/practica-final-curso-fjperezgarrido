@@ -82,7 +82,7 @@ class ApuntesContainer extends Component {
                  target="_blank"
                  rel="noopener noreferrer">
                 Diagrama del ciclo de vida de metodos en React</a>
-              <br/>(además multilanguage, mejor ejemplo imposible para futuras referencias) (no se ve en el curso ;)
+              <br/>(además multilanguage, mejor ejemplo imposible para futuras referencias) (se ve en el curso, en el primer tema, sorry).
             </p>
 
             <p>
