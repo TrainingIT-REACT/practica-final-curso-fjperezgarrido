@@ -30,7 +30,17 @@ module.exports = {
       filename: "./index.html"
     }),
     new WorkboxPlugin.InjectManifest({
-      swSrc: './src/sw.js',
+      swSrc: `./src/sw.js`,
+      swDest: 'sw.js',
+      include: [
+        /\.html$/,
+        /\.js$/,
+        /\.css$/,
+        /\.woff2$/,
+        /\.jpg$/,
+        /\.png$/
+      ],
+      maximumFileSizeToCacheInBytes: 100 * 1024 * 1024
     })
   ],
   devServer: {
